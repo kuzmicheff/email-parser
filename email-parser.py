@@ -5,11 +5,8 @@ def checkEmailInput():
     localCharacterList = list(localCharacterString) 
     domainCharacterString = "!#$%&?/|[{<]}>^`'\"*+=~,_"
     domainCharacterList = list(domainCharacterString) 
-#    print(localCharacterList) 
-#    print(domainCharacterList)
     emailString = input("Please enter an email address to check: ") 
     emailList = list(emailString.lower()) 
-
     if len(emailList) > 2 and len(emailList) < 255: 
         pass 
     else: 
@@ -21,7 +18,6 @@ def checkEmailInput():
     else: 
         print("\nThe address you have entered does not start with a letter.") 
         return checkEmailInput() 
-
     atCounter = emailList.count("@") 
     if atCounter == 1: 
         pass 
@@ -31,25 +27,20 @@ def checkEmailInput():
     else: 
         print("\nThe address you have entered contains more than one @ character.") 
         return checkEmailInput() 
-
     atPosition = emailList.index("@") 
-
     localPart = emailList[:atPosition] 
     domainPart = emailList[atPosition + 1:] 
-
     for localListItem in localPart: 
         if localListItem not in localCharacterList: 
             pass 
         else: 
             print("\nThe local part contains prohibited special characters.") 
             return checkEmailInput() 
-
     if domainPart[0] is not ".": 
         pass 
     else: 
         print("\nThe domain part starts with a period.") 
         return checkEmailInput() 
-
     domainLength = len(domainPart) 
 
     if domainPart[domainLength - 1] is not ".": 
@@ -64,7 +55,6 @@ def checkEmailInput():
         else: 
             print("\nThe domain part contains prohibited special characters.") 
             return checkEmailInput() 
-
     print("\nThe address", emailString, "is a valid email address!")
 
 def main(): 
