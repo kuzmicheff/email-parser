@@ -12,7 +12,6 @@ def checkEmailInput():
     else: 
         print("\nThe length of an email address must be between 3 and 254 characters.") 
         return checkEmailInput() 
-
     if emailList[0] in letterList: 
         pass 
     else: 
@@ -30,25 +29,29 @@ def checkEmailInput():
     atPosition = emailList.index("@") 
     localPart = emailList[:atPosition] 
     domainPart = emailList[atPosition + 1:] 
+    domainLength = len(domainPart) 
     for localListItem in localPart: 
         if localListItem not in localCharacterList: 
             pass 
         else: 
             print("\nThe local part contains prohibited special characters.") 
             return checkEmailInput() 
-    if domainPart[0] is not ".": 
+    dotCounter = domainPart.count(".") 
+    if dotCounter >= 1: 
+        pass 
+    else: 
+        print("\nThe domain part does not contain a period.") 
+        return checkEmailInput() 
+    if domainPart[0] != ".": 
         pass 
     else: 
         print("\nThe domain part starts with a period.") 
         return checkEmailInput() 
-    domainLength = len(domainPart) 
-
-    if domainPart[domainLength - 1] is not ".": 
+    if domainPart[domainLength - 1] != ".": 
         pass 
     else: 
         print("\nThe domain part ends with a period.") 
-        return checkEmailInput() 
-
+        return checkEmailInput()
     for domainListItem in domainPart: 
         if domainListItem not in domainCharacterList: 
             pass 
